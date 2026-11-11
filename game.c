@@ -1,151 +1,116 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <conio.h>
-#include <windows.h>
-
 #include "game.h"
-#include "snake.h"
-#include "food.h"
-#include "graphics.h"
 
-#define WIDTH 30
-#define HEIGHT 16
+#define MAX_CARDS 12
 
-static int loadHighScore(void)
+void displayBoard(char cards[], int rows, int cols,
+                  int matched[], int reveal[])
 {
-    FILE *file = fopen("highscore.txt", "r");
-    int value = 0;
+    int i, j, k = 0;
 
-    if (file != NULL) {
-        fscanf(file, "%d", &value);
-        fclose(file);
-    }
+    printf("\n========== CARD BOARD ==========\n\n");
 
-    return value;
-}
+    for(i = 0; i < rows; i++)
+    {
+        for(j = 0; j < cols; j++)
+        {
+            if(matched[k] || reveal[k])
+                printf("  [%c] ", cards[k]);
+            else
+                printf("  [%d] ", k + 1);
 
-static void saveHighScore(int value)
-{
-    FILE *file = fopen("highscore.txt", "w");
-
-    if (file != NULL) {
-        fprintf(file, "%d", value);
-        fclose(file);
-    }
-}
-
-static void soundStart(void)
-{
-    Beep(700, 100);
-    Beep(900, 120);
-}
-
-static void soundEat(void)
-{
-    Beep(1100, 70);
-}
-
-static void soundGameOver(void)
-{
-    Beep(450, 180);
-    Beep(300, 250);
-}
-
-void startGame(void)
-{
-    Snake snake;
-    Food food;
-    int dx = 1, dy = 0;
-    int score = 0;
-    int highScore = loadHighScore();
-    int gameOver = 0;
-    int paused = 0;
-    int exitGame = 0;
-    int grow;
-    int key;
-
-    srand((unsigned int)time(NULL));
-    setupConsole();
-    initSnake(&snake);
-    placeFood(&food, &snake, WIDTH, HEIGHT);
-    soundStart();
-
-    while (!gameOver && !exitGame) {
-        if (_kbhit()) {
-            key = _getch();
-
-            if (key == 0 || key == 224) {
-                key = _getch();
-
-                if (key == 72 && dy != 1) { dx = 0; dy = -1; }
-                else if (key == 80 && dy != -1) { dx = 0; dy = 1; }
-                else if (key == 75 && dx != 1) { dx = -1; dy = 0; }
-                else if (key == 77 && dx != -1) { dx = 1; dy = 0; }
-            } else if (key == 'p' || key == 'P') {
-                paused = !paused;
-            } else if (key == 'x' || key == 'X') {
-                exitGame = 1;
-            }
+            k++;
         }
 
-        if (exitGame)
-            break;
+        printf("\n\n");
+    }
+}
 
-        if (paused) {
-            drawBoard(&snake, &food, WIDTH, HEIGHT, score, highScore, paused);
-            Sleep(100);
+void playGame(char cards[], int rows, int cols, int sets)
+{
+    int totalCards = rows * cols;
+    int matched[MAX_CARDS] = {0};
+    int reveal[MAX_CARDS] = {0};
+
+    int first, second, third;
+    int matchedSets = 0;
+    int attempts = 0;
+
+    while(matchedSets < sets)
+    {
+        int i;
+
+        for(i = 0; i < totalCards; i++)
+            reveal[i] = 0;
+
+        displayBoard(cards, rows, cols, matched, reveal);
+
+        printf("\nSelect three cards (1-%d)\n", totalCards);
+
+        printf("Enter first card: ");
+        scanf("%d", &first);
+
+        printf("Enter second card: ");
+        scanf("%d", &second);
+
+        printf("Enter third card: ");
+        scanf("%d", &third);
+
+        if(first < 1 || first > totalCards ||
+           second < 1 || second > totalCards ||
+           third < 1 || third > totalCards ||
+           first == second || first == third ||
+           second == third ||
+           matched[first - 1] ||
+           matched[second - 1] ||
+           matched[third - 1])
+        {
+            printf("\nInvalid selection! Try again.\n");
             continue;
         }
 
-        grow = (snake.head->x + dx == food.x &&
-                snake.head->y + dy == food.y);
+        first--;
+        second--;
+        third--;
 
-        moveSnake(&snake, dx, dy, grow);
+        reveal[first] = 1;
+        reveal[second] = 1;
+        reveal[third] = 1;
 
-        if (snake.head->x <= 0 || snake.head->x > WIDTH ||
-            snake.head->y <= 0 || snake.head->y > HEIGHT) {
-            gameOver = 1;
+        attempts++;
+
+        displayBoard(cards, rows, cols, matched, reveal);
+
+        if(cards[first] == cards[second] &&
+           cards[second] == cards[third])
+        {
+            printf("\nExcellent! You found a matching set!\n");
+
+            matched[first] = 1;
+            matched[second] = 1;
+            matched[third] = 1;
+
+            matchedSets++;
+        }
+        else
+        {
+            printf("\nNot a match! Try again.\n");
         }
 
-        /* Ignore the tail during collision checking when it is about to move away. */
-        if (!gameOver) {
-            Node *current = snake.head->next;
+        printf("\nAttempts used: %d\n", attempts);
 
-            while (current != NULL) {
-                if (current->x == snake.head->x &&
-                    current->y == snake.head->y) {
-                    gameOver = 1;
-                    break;
-                }
-                current = current->next;
-            }
+        if(matchedSets < sets)
+        {
+            printf("\nPress Enter to continue...");
+            getchar();
+            getchar();
         }
-
-        if (grow && !gameOver) {
-            score += 10;
-            soundEat();
-            placeFood(&food, &snake, WIDTH, HEIGHT);
-        }
-
-        if (score > highScore) {
-            highScore = score;
-            saveHighScore(highScore);
-        }
-
-        drawBoard(&snake, &food, WIDTH, HEIGHT, score, highScore, paused);
-        Sleep(140);
     }
 
-    if (gameOver) {
-        soundGameOver();
-        printf("\n       💥 GAME OVER! Final Score: %d\n", score);
-    } else {
-        printf("\n       👋 Game exited. Final Score: %d\n", score);
-    }
+    printf("\n================================\n");
+    printf("       CONGRATULATIONS!\n");
+    printf("       YOU WON THE GAME!\n");
+    printf("================================\n");
 
-    printf("       🏆 High Score: %d\n", highScore);
-    freeSnake(&snake);
-    printf("\nPress any key to close...");
-    _getch();
+    printf("Total attempts: %d\n", attempts);
 }

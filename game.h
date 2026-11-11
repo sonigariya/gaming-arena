@@ -1,6 +1,6 @@
 #ifndef GAME_H
 #define GAME_H
 
-void startGame(void);
+void playGame(char cards[], int rows, int cols, int sets);
 
 #endif
