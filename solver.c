@@ -164,7 +164,7 @@ void startGame(Game *g)
     }
 }
 
-int main()
+void maze solver()
 {
     Game g;
 
