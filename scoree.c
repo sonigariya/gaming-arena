@@ -1,4 +1,4 @@
-#include "score.h"
+#include "scoree.h"
 
 int calculateXP(int matchedPairs, int attempts)
 {
