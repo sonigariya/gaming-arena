@@ -89,5 +89,5 @@ void playtetris() {
     term_restore();
     hl_free(&scores);
     printf("\n  Thanks for playing!\n");
-    return 0;
+    return ;
 }
