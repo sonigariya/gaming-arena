@@ -4,7 +4,7 @@
  * The whole board takes H + 3 lines, so it fits a small terminal.
  * Syllabus: recursion (print_log), bubble sort (usage statistics),
  * list traversal (high scores) */
-#include "common.h"
+#include "commonn.h"
 #include "display.h"
 #include "sort.h"
 
