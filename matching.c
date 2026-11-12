@@ -24,7 +24,7 @@ void cardmatchig()
     if (scanf("%d", &choice) != 1)
     {
         printf("Invalid input!\n");
-        return 1;
+        return ;
     }
 
     settings = getLevelSettings(choice);
