@@ -1,8 +1,9 @@
 /* main.c - game loop
  * Real time: read keys, move the piece, apply gravity, redraw. */
+#include<stdio.h>
 #include <time.h>
-#include "common.h"
-#include "game.h"
+#include "commonn.h"
+#include "gamme.h"
 #include "list.h"
 #include "input.h"
 #include "display.h"
