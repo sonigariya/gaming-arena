@@ -53,7 +53,7 @@ static int play(Game *g, const HList *hs) {
     return 0;
 }
 
-int main(void) {
+void playtetris() {
     HList scores;
     Game *g;
     int quit = 0, key, decided;
