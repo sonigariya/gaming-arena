@@ -3,5 +3,5 @@
 void playsnamke()
 {
     startGame();
-    return 0;
+    return ;
 }
