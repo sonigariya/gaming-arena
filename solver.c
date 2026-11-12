@@ -164,7 +164,7 @@ void startGame(Game *g)
     }
 }
 
-void maze solver()
+void mazesolver()
 {
     Game g;
 
