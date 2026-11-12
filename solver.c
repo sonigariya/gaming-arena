@@ -255,5 +255,5 @@ void mazesolver()
 
     } while(choice != 5);
 
-    return 0;
+    return ;
 }
