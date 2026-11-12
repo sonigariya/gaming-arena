@@ -32,7 +32,7 @@ void cardmatchig()
     if (settings.rows == 0)
     {
         printf("Invalid level selection!\n");
-        return 1;
+        return ;
     }
 
     int totalCells = settings.rows * settings.cols;
