@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "game.h"
-#include "score.h"
+#include "gamee.h"
+#include "scoree.h"
 
 #define MAX_CELLS 25
 
