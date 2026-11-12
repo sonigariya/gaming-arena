@@ -6,7 +6,7 @@
 #include "cards.h"
 #include "game.h"
 
-int main(void)
+void cardmatchig()
 {
     int choice;
     LevelConfig settings;
