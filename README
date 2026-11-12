@@ -1,0 +1,211 @@
+# 🎮 Gaming Arena – DSA with C
+
+## 📌 About the Project
+
+**Gaming Arena** is a console-based gaming application developed as a Project-Based Learning (PBL) project for the Data Structures and Algorithms (DSA) course using the C programming language.
+
+The project brings multiple interactive games together into a single platform. Users can select their preferred game from the main menu and enjoy an engaging gaming experience while exploring the practical applications of data structures and algorithms.
+
+The main objective of this project is to implement fundamental DSA concepts in a fun, interactive, and practical way.
+
+---
+
+## 🎯 Objectives
+
+- To implement Data Structures and Algorithms concepts in real-world applications.
+- To develop an interactive multi-game console application.
+- To improve logical thinking and problem-solving skills.
+- To understand modular programming in C.
+- To implement game logic using appropriate data structures.
+- To develop teamwork and collaborative programming skills.
+
+---
+
+## 🎲 Games Included
+
+Gaming Arena consists of four different games:
+
+### 1. 🐍 Snake Game
+A classic snake game where the player controls a snake to collect food and increase their score while avoiding collisions.
+
+**Features:**
+- Interactive snake movement.
+- Food generation.
+- Score tracking.
+- High score system.
+- Game pause functionality.
+- Collision detection.
+
+### 2. 🧩 Maze Solver
+An interactive maze game where the player navigates through a maze to reach the destination while avoiding obstacles.
+
+**Features:**
+- Multiple difficulty levels: Easy, Medium, and Hard.
+- Player movement through the maze.
+- Wall and obstacle detection.
+- Traps.
+- Score system.
+- Leaderboard.
+- Save and resume progress.
+
+### 3. 🃏 Card Matching Game
+A memory-based game where the player matches pairs of cards by remembering their positions.
+
+**Features:**
+- Interactive card selection.
+- Matching pairs.
+- Memory-based gameplay.
+- Score tracking.
+- Game completion detection.
+
+### 4. 🧱 Tetris Game
+
+Tetris is a classic puzzle game in which players arrange falling blocks (Tetriminos) to form complete horizontal lines. The completed lines disappear, increasing the player's score. The objective is to clear as many lines as possible while preventing the blocks from reaching the top of the game board.
+
+**Features:**
+- Falling block mechanics.
+- Player-controlled block movement.
+- Block rotation.
+- Line clearing system.
+- Score tracking.
+- Collision detection.
+- Game-over detection.
+- Increasing game difficulty.
+
+## 🛠️ Technologies Used
+
+- **Programming Language:** C
+- **Concepts:** Data Structures and Algorithms
+- **Compiler:** GCC
+- **IDE:** Visual Studio Code
+- **Version Control:** Git
+- **Repository Hosting:** GitHub
+
+---
+
+## 📚 DSA Concepts Used
+
+The project demonstrates the practical implementation of various DSA concepts, including:
+
+- Arrays
+- Linked Lists
+- Structures
+- Functions
+- Pointers
+- Searching
+- Sorting
+- Memory Management
+- File Handling
+- Stack and Queue (where applicable)
+
+---
+
+## 🚀 How to Run the Project
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- GCC Compiler
+- Visual Studio Code
+- Git
+
+### Steps
+
+**1. Clone the repository**
+
+```bash
+git clone https://github.com/sonigariya/gaming-arena
+```
+
+**2. Navigate to the project folder**
+
+```bash
+cd Gaming-Arena
+```
+
+**3. Compile the project**
+
+```bash
+gcc main.c -o gaming_arena
+```
+
+If the project contains multiple C source files, include all required files in the compilation command.
+
+**4. Run the application**
+
+For Linux/macOS:
+
+```bash
+./gaming_arena
+```
+
+For Windows:
+
+```bash
+gaming_arena.exe
+```
+
+---
+
+## 📂 Project Structure
+
+```text
+Gaming-Arena/
+│
+├── main.c
+├── README.md
+│
+├── Maze-Solver
+│
+├── Snake-Game
+│
+├── Card-Matching
+│
+└── Tetris-Game
+
+
+## 👥 Team Members
+
+This project is developed collaboratively by a team of four members.
+
+| S.No. | Team Member | Game / Contribution |
+|-------|-------------|---------------------|
+| 1 | Member 1 | Maze Solver |
+| 2 | Member 2 | Snake Game |
+| 3 | Member 3 | Card Matching |
+| 4 | Member 4 | Tetris |
+
+---
+
+## 🎓 Project Information
+
+| Category | Details |
+|----------|---------|
+| Project Title | Gaming Arena |
+| Subject | Data Structures and Algorithms with C |
+| Project Type | Project-Based Learning (PBL) |
+| Programming Language | C |
+| Team Size | 4 Members |
+
+---
+
+## 🌟 Conclusion
+
+Gaming Arena is a multi-game application that demonstrates the practical use of Data Structures and Algorithms through interactive gameplay.
+
+The project helps students understand programming concepts, improve problem-solving abilities, and gain experience in modular development and team collaboration.
+
+It combines learning and entertainment into a single platform while showcasing the capabilities of the C programming language.
+
+---
+
+## 🔮 Future Scope
+
+- Add more interactive games.
+- Improve the graphical interface.
+- Implement advanced scoring systems.
+- Add player profiles.
+- Enhance the leaderboard system.
+- Introduce multiplayer functionality.
+
