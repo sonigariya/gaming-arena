@@ -24,7 +24,7 @@ int main()
         switch(choice)
         {
             case 1:
-                mazesolve();
+                mazesolver();
                 break;
 
             case 2:
