@@ -1,6 +1,6 @@
 #include "game.h"
 
-int main(void)
+void playsnamke()
 {
     startGame();
     return 0;
