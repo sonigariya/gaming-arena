@@ -4,8 +4,8 @@
  *           linked stack (rows to clear), recursion, tail recursion
  *   Unit 2  circular queue (next pieces), singly linked list (piece log)
  *   Unit 4  insertion sort (random 7-bag) */
-#include "common.h"
-#include "game.h"
+#include "commonn.h"
+#include "gamme.h"
 #include "sort.h"
 
 /* ---------------- 7-bag: shuffle by sorting on a random key ---------------- */
