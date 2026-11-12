@@ -56,5 +56,5 @@ void cardmatchig()
 
     printf("\nThank you for playing!\n");
 
-    return 0;
+    return ;
 }
